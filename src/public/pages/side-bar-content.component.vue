@@ -35,7 +35,8 @@ export default {
             items: [
                 { label: 'Home', icon: 'home', to: '/home'},
                 { label: 'Personal data', icon:'border_color', to: '/personal-data'},
-                { label: 'Payment Methods', icon: 'home', to:'/payment-methods'}
+                { label: 'Payment Methods', icon: 'home', to:'/payment-methods'},
+                { label: 'Notifications', icon:'border_color', to: '/notifications'},
             ]
         }
     }
