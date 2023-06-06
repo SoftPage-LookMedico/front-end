@@ -5,14 +5,10 @@
 
     <!--buttons addCaterory + Inventory-->
     <div class="card">
-        <div class="text-black font-bold flex align-items-center justify-content-left p-4 border-round mr-3">
-            <h2>MY STORE</h2>
-        </div>
-        <div class="card-container blue-container flex align-items-center justify-content-start">
-
+        <div class="card-container blue-container flex align-items-center justify-content-center">
             <div class="text-white font-bold flex align-items-center justify-content-center p-4 border-round mr-3">
                 <router-link
-                    to="/admin/category/add"
+                    to="/supplier/market"
                     custom
                     v-slot="{ navigate }"
                 >
@@ -22,14 +18,14 @@
                         v-bind:class="{'lightblue': !clicked, 'green': clicked}"
                         v-on:click ="clicked = !clicked"
                     >
-                        Add Category
+                        Supplier
                     </pv-button>
                 </router-link>
             </div>
 
             <div class=" text-white font-bold flex align-items-center justify-content-center p-4 border-round">
                 <router-link
-                    to="/admin/inventory/add"
+                    to="/buyer/market"
                     custom
                     v-slot="{ navigate }"
                 >
@@ -39,11 +35,12 @@
                         v-bind:class="{'lightblue': !clicked, 'green': clicked}"
                         v-on:click ="clicked = !clicked"
                     >
-                        Inventory
+                        Buyer
                     </pv-button>
                 </router-link>
             </div>
         </div>
+        <h3>Select your user for a better experience</h3>
 
     </div>
     <!--/buttons addCaterory + Inventory-->
@@ -55,7 +52,7 @@
         <DataView :value="products" :layout="layout">
             <template #header>
                 <div class="font-bold flex align-items-center justify-content-center p-4 border-round">
-                    <h2>My Produtcs</h2>
+                    <h2>Top Categories</h2>
                 </div>
                 <div class="flex justify-content-end">
                     <DataViewLayoutOptions v-model="layout" />
@@ -69,23 +66,14 @@
                         <div class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                             <div class="flex flex-column align-items-center sm:align-items-start gap-3">
                                 <div class="text-2xl font-bold">{{ slotProps.data.title }}</div>
-                                <div class="text-2xl ">{{ slotProps.data.description }}</div>
-                                <pv-rating :modelValue="slotProps.data.rating" readonly :cancel="false">
-                                    <div class="card flex justify-content-center">
-                                        <Rating v-model="value" :cancel="false"  />
-                                    </div>
-                                </pv-rating>
+                                <div class="text-2xl text-blue-400">{{ slotProps.data.description }}</div>
+
                                 <div class="flex align-items-center gap-3">
                                     <span class="flex align-items-center gap-2">
                                         <i class="pi pi-tag"></i>
                                         <span class="font-semibold">{{ slotProps.data.category }}</span>
                                     </span>
-                                    <pv-tag :value="slotProps.data.inventoryStatus" :severity="getSeverity(slotProps.data)"></pv-tag>
                                 </div>
-                            </div>
-                            <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-                                <span class="text-2xl font-semibold">${{ slotProps.data.price }}</span>
-
                             </div>
                         </div>
                     </div>
@@ -100,18 +88,11 @@
                                 <i class="pi pi-tag"></i>
                                 <span class="font-semibold">{{ slotProps.data.category }}</span>
                             </div>
-                            <pv-tag :value="slotProps.data.inventoryStatus" :severity="getSeverity(slotProps.data)"></pv-tag>
                         </div>
                         <div class="flex flex-column align-items-center gap-3 py-5">
                             <img class="w-9 shadow-2 border-round" :src="`https://norvil-web.storage.googleapis.com/cms_multimedia/cms_medias/files/000/002/134/tablet_webp/1739_593.c141.webp?1615459779`" :alt="slotProps.data.name" />
                             <div class="text-2xl font-bold">{{ slotProps.data.title }}</div>
-                            <div class="text-2xl ">{{ slotProps.data.description }}</div>
-                            <div class="card flex justify-content-center">
-                                <Rating v-model="value" :cancel="false"  />
-                            </div>
-                        </div>
-                        <div class="flex align-items-center justify-content-between">
-                            <span class="text-2xl font-semibold">${{ slotProps.data.price }}</span>
+                            <div class="text-2xl text-blue-800">{{ slotProps.data.description }}</div>
 
                         </div>
                     </div>
@@ -140,30 +121,12 @@ export default {
     created() {
         console.log("created");
         this.productsService = new ProductsApiService();
-        this.productsService.getAll()
+        this.productsService.getCategoryAll()
             .then((response) => {
                 this.products = response.data;
                 console.log(response);
             });
         console.log(this.products);
-    },
-
-    methods: {
-        getSeverity(product) {
-            switch (product.inventoryStatus) {
-                case 'INSTOCK':
-                    return 'success';
-
-                case 'LOWSTOCK':
-                    return 'warning';
-
-                case 'OUTOFSTOCK':
-                    return 'danger';
-
-                default:
-                    return null;
-            }
-        }
     }
 };
 </script>
@@ -184,8 +147,10 @@ export default {
     background-color: #2D8425;
 }
 
-h2{
-    text-align: left;
+h3{
+    text-align: center;
+    color: #0099AD;
+
 }
 .container {
     padding: 0px !important;
