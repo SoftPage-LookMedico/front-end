@@ -18,6 +18,15 @@ import Sidebar from "primevue/sidebar";
 import Menubar from "primevue/menubar";
 import Card from "primevue/card";
 import Avatar from "primevue/avatar";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import Dialog from "primevue/dialog";
+import InputText from "primevue/inputtext";
+import Dropdown from "primevue/dropdown";
+import Panel from "primevue/panel";
+import Toast from "primevue/toast";
+import ToastService from "primevue/toastservice";
+import Textarea from "primevue/textarea";
 
 import Column from "primevue/column";
 import DataView from 'primevue/dataview';
@@ -30,9 +39,9 @@ import OrderList from 'primevue/orderlist';
 import Tag from "primevue/tag";
 
 createApp(App)
+    .use(ToastService)
     .use(router)
     .use(PrimeVue, { ripple: true })
-    .component('pv-toolbar', Toolbar)
     .component('pv-button', Button)
     .component('pv-sidebar', Sidebar)
     .component('pv-menubar', Menubar)
@@ -47,4 +56,8 @@ createApp(App)
     .component('pv-input-text', InputText)
     .component('OrderList', OrderList)
     .component('pv-tag', Tag)
+    .component('pv-panel', Panel)
+    .component('pv-toast', Toast)
+    .component('pv-textarea', Textarea)
+    .component('pv-toolbar', Toolbar)
     .mount('#app')
