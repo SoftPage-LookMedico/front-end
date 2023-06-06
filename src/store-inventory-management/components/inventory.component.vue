@@ -53,6 +53,7 @@
                 <pv-column field="color" header="Color" :sortable="true" style="min-width: 12rem"></pv-column>
                 <pv-column field="quantity" header="Quantity" :sortable="true" style="min-width: 8rem"></pv-column>
                 <pv-column field="stock" header="Stock" :sortable="true" style="min-width: 8rem"></pv-column>
+                <pv-column field="inventoryStatus" header="InventoryStatus" :sortable="true" style="min-width: 8rem"></pv-column>
                 <pv-column field="state" header="State" :sortable="true" style="min-width: 12rem">
                     <template #body="slotProps">
                         <pv-tag v-if="slotProps.data.status === 'Published'"
@@ -74,7 +75,7 @@
             <!-- Add/Edit Products Dialog -->
             <pv-dialog v-model:visible="productDialog"
                        :style="{width: '450px'}"
-                       header="Tutorial Information"
+                       header="Product Information"
                        :modal="true"
                        class="p-fluid">
 
@@ -82,7 +83,7 @@
                   <span class="p-float-label">
                       <pv-input-text type="text"
                                      v-model.trim="product.code"
-                                     required="false"
+                                     required="true"
                                      rows="2" cols="20"/>
                       <label for="code">Code</label>
                   </span>
@@ -101,12 +102,94 @@
                 <div class="field">
                   <span class="p-float-label">
                       <pv-input-text type="text"
+                                     v-model.trim="product.photoUrl"
+                                     required="true"
+                                     rows="2" cols="20"/>
+                      <label for="photoUrl">Photo</label>
+                  </span>
+                </div>
+
+                <div class="field">
+                  <span class="p-float-label">
+                      <pv-input-text type="text"
+                                     v-model.trim="product.gender"
+                                     required="true"
+                                     rows="2" cols="20"/>
+                      <label for="gender">Gender</label>
+                  </span>
+                </div>
+
+                <div class="field">
+                  <span class="p-float-label">
+                      <pv-input-text type="text"
                                      v-model.trim="product.description"
-                                     required="false"
+                                     required="true"
                                      rows="2" cols="20"/>
                       <label for="description">Description</label>
                   </span>
                 </div>
+
+                <div class="field">
+                  <span class="p-float-label">
+                      <pv-input-text type="text"
+                                     v-model.trim="product.material"
+                                     required="true"
+                                     rows="2" cols="20"/>
+                      <label for="material">Material</label>
+                  </span>
+                </div>
+
+                <div class="field">
+                  <span class="p-float-label">
+                      <pv-input-text type="text"
+                                     v-model.trim="product.price"
+                                     required="true"
+                                     rows="2" cols="20"/>
+                      <label for="price">Price</label>
+                  </span>
+                </div>
+
+                <div class="field">
+                  <span class="p-float-label">
+                      <pv-input-text type="text"
+                                     v-model.trim="product.color"
+                                     required="true"
+                                     rows="2" cols="20"/>
+                      <label for="color">Color</label>
+                  </span>
+                </div>
+
+                <div class="field">
+                  <span class="p-float-label">
+                      <pv-input-text type="text"
+                                     v-model.trim="product.quantity"
+                                     required="true"
+                                     rows="2" cols="20"/>
+                      <label for="quantity">Quantity</label>
+                  </span>
+                </div>
+
+                <div class="field">
+                  <span class="p-float-label">
+                      <pv-input-text type="text"
+                                     v-model.trim="product.stock"
+                                     required="true"
+                                     rows="2" cols="20"/>
+                      <label for="stock">Stock</label>
+                  </span>
+                </div>
+
+                <div class="field">
+                  <span class="p-float-label">
+                      <pv-input-text type="text"
+                                     v-model.trim="product.inventoryStatus"
+                                     required="true"
+                                     rows="2" cols="20"/>
+                      <label for="inventoryStatus">Status</label>
+                  </span>
+                </div>
+
+
 
                 <div class="field">
                     <pv-dropdown id="published"
@@ -116,12 +199,12 @@
                                  placeholder="Select an Status">
                         <template #value="slotProps">
                             <div v-if="slotProps.value && !slotProps.value.value">
-                                <span :class="'tutorial-badge status-' + slotProps.value.toLowerCase()">
+                                <span :class="'product-badge status-' + slotProps.value.toLowerCase()">
                                     {{ slotProps.value.label }}
                                 </span>
                             </div>
                             <div v-else-if="slotProps.value && !slotProps.value.value">
-                                <span :class="'tutorial-badge status-' + slotProps.value.toLowerCase()">
+                                <span :class="'product-badge status-' + slotProps.value.toLowerCase()">
                                     {{ slotProps.value }}
                                 </span>
                             </div>
@@ -232,8 +315,17 @@ export default {
         getStorableProduct(displayableProduct) {
             return {
                 id: displayableProduct.id,
+                code: displayableProduct.code,
                 title: displayableProduct.title,
+                gender: displayableProduct.gender,
+                photoUrl: displayableProduct.photoUrl,
                 description: displayableProduct.description,
+                material: displayableProduct.material,
+                price: displayableProduct.price,
+                color: displayableProduct.color,
+                quantity: displayableProduct.quantity,
+                stock: displayableProduct.stock,
+                inventoryStatus: displayableProduct.inventoryStatus,
                 published: displayableProduct.status.label === "Published",
             }
         },
@@ -283,7 +375,7 @@ export default {
                             this.$toast.add({
                                 severity: "success",
                                 summary: "Success",
-                                detail: "Tutorial Created",
+                                detail: "Product Created",
                                 life: 3000,
                             });
                             console.log(response);
