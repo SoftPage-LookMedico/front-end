@@ -3,9 +3,16 @@ export class ProductsApiService {
     getAll() {
         return http.get('/products');
     }
+    getCategoryAll() {
+        return http.get('/categories');
+    }
 
     getById(id) {
         return http.get(`/products/${id}`);
+    }
+
+    getByTitle(title) {
+        return http.get(`/products/${title}`);
     }
 
     create(data) {
