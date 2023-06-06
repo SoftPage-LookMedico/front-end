@@ -4,6 +4,8 @@ import App from './App.vue'
 import PrimeVue from "primevue/config";
 import router from "./router/index.js";
 
+import '@fortawesome/fontawesome-free/js/all'
+
 //Prime Vue Material Design Theme
 import 'primevue/resources/themes/md-light-indigo/theme.css';
 import 'primevue/resources/primevue.min.css'
@@ -26,6 +28,16 @@ import Toast from "primevue/toast";
 import ToastService from "primevue/toastservice";
 import Textarea from "primevue/textarea";
 
+import Column from "primevue/column";
+import DataView from 'primevue/dataview';
+import DataTable from "primevue/datatable";
+import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions';
+import Dialog from "primevue/dialog";
+import Dropdown from 'primevue/dropdown';
+import InputText from "primevue/inputtext";
+import OrderList from 'primevue/orderlist';
+import Tag from "primevue/tag";
+
 createApp(App)
     .use(ToastService)
     .use(router)
@@ -35,11 +47,15 @@ createApp(App)
     .component('pv-menubar', Menubar)
     .component('pv-card', Card)
     .component('pv-avatar', Avatar)
+    .component("pv-column", Column)
+    .component('DataView', DataView)
     .component('pv-data-table', DataTable)
-    .component('pv-column', Column)
+    .component('DataViewLayoutOptions', DataViewLayoutOptions)
     .component('pv-dialog', Dialog)
+    .component('Dropdown', Dropdown)
     .component('pv-input-text', InputText)
-    .component('pv-dropdown', Dropdown)
+    .component('OrderList', OrderList)
+    .component('pv-tag', Tag)
     .component('pv-panel', Panel)
     .component('pv-toast', Toast)
     .component('pv-textarea', Textarea)

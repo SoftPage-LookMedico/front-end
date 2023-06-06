@@ -1,6 +1,9 @@
 //Routing Module
 import {createRouter, createWebHistory} from "vue-router";
-import marketComponent from "../public/pages/market.component.vue";
+import MarketComponent from "../store-inventory-management/pages/market.component.vue";
+import MarketBuyerComponent from "../store-inventory-management/pages/market-Buyer.component.vue";
+import MarketSupplierComponent from "../store-inventory-management/pages/market-Supplier.component.vue";
+import ProductSelectionComponent from "../store-inventory-management/pages/product-selection.component.vue"
 import ShoppingChartComponent from "../public/pages/shopping-chart.component.vue";
 import notificationsComponent from "../public/pages/notifications.component.vue";
 import paymentMethodsComponent from "../public/pages/payment-methods.component.vue";
@@ -10,6 +13,8 @@ import supplierHomeContentComponent from "../profiles-management/pages/supplier-
 import supplierPersonalDataComponent from "../profiles-management/pages/supplier-personal-data.component.vue";
 import supplierBussinessInformationComponent from "../profiles-management/pages/supplier-business-information.component.vue";
 import loginComponent from "../identity-and-access-management/pages/login.component.vue";
+import addCategoryComponent from "../store-inventory-management/components/add-Category.component.vue";
+import InventoryComponent from "../store-inventory-management/components/inventory.component.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -27,9 +32,17 @@ const router = createRouter({
         { path: "/supplier/:id/business-information", name: 'supplier-business-information', component: supplierBussinessInformationComponent},
 
         { path: "/payment-methods", component: paymentMethodsComponent},
-        { path: "/market", component: marketComponent},
+        
+        { path: "/market", name: "Market", component: MarketComponent},
+        { path: "/supplier/market", name: "Market-Supplier", component: MarketSupplierComponent},
+        { path: "/buyer/market", name: "Market-buyer", component: MarketBuyerComponent},
+        { path: "/product-selection", component: ProductSelectionComponent },
+        
         { path: "/shopping-chart", component: ShoppingChartComponent },
-        { path: "/notifications", component: notificationsComponent}
+        { path: "/notifications", component: notificationsComponent},
+        
+        { path: "/supplier/category/add", name: 'AddCategory', component: addCategoryComponent },
+        { path: "/supplier/inventory/add", name: 'Inventory', component: InventoryComponent },
     ]
 })
 
