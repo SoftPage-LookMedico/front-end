@@ -12,7 +12,7 @@
 
             <div class="text-white font-bold flex align-items-center justify-content-center p-4 border-round mr-3">
                 <router-link
-                        to="/admin/category/add"
+                        to="/supplier/category/add"
                         custom
                         v-slot="{ navigate }"
                 >
