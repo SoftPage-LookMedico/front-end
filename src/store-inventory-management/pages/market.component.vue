@@ -62,7 +62,7 @@
             <template #list="slotProps">
                 <div class="col-12">
                     <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-                        <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" :src="`https://norvil-web.storage.googleapis.com/cms_multimedia/cms_medias/files/000/002/134/tablet_webp/1739_593.c141.webp?1615459779`" :alt="slotProps.data.name" />
+                        <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" :src="`${slotProps.data.photoUrl}`" :alt="slotProps.data.name" />
                         <div class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                             <div class="flex flex-column align-items-center sm:align-items-start gap-3">
                                 <div class="text-2xl font-bold">{{ slotProps.data.title }}</div>
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div class="flex flex-column align-items-center gap-3 py-5">
-                            <img class="w-9 shadow-2 border-round" :src="`https://norvil-web.storage.googleapis.com/cms_multimedia/cms_medias/files/000/002/134/tablet_webp/1739_593.c141.webp?1615459779`" :alt="slotProps.data.name" />
+                            <img class="w-9 shadow-2 border-round" :src="`${slotProps.data.photoUrl}`" :alt="slotProps.data.name" />
                             <div class="text-2xl font-bold">{{ slotProps.data.title }}</div>
                             <div class="text-2xl text-blue-800">{{ slotProps.data.description }}</div>
 
