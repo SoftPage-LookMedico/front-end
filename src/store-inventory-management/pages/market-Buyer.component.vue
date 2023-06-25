@@ -19,7 +19,7 @@
                         <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" :src="`${slotProps.data.photoUrl}`" :alt="slotProps.data.photoUrl"/>
                         <div class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                             <div class="flex flex-column align-items-center sm:align-items-start gap-3">
-                                <router-link :to="{name:'Product-selection', params:{id : products.title}}" >
+                                <router-link :to="{name:'Product-selection', params:{id : products.id}}" >
                                     <div class="text-2xl font-bold">{{ slotProps.data.title }}</div>
                                 </router-link>
                                 <div class="text-2xl ">{{ slotProps.data.description }}</div>
